@@ -112,7 +112,14 @@ Java社区会因此受益，且提高了对多线程软件的移植性。
 
 请简短描述该技术
 
-Please see 2.1 above.
+* When multi threads were running. Reorginizing the thread from pyramidal thread pools. Or regist the thread at first. 
+* When threads blocked by child thread. Finish the child First.
+* Beacouse the thread stack were detected or the thread depends were regist by itsself. Some times, the Dead Lock situation were avoided at first.
+
+
+* 当多线程运行时。重新进行线程信息组织，将其从层级的线程池中抽取出来。或者直接登记线程。
+* 当线程被子线程堵塞时，优先完成子线程
+* 由于线程执行依赖情况被自己持有或感知。在一些场景下，死锁可以被第一时间感知避免
 
 
 ### Is there a proposed package name for the API Specification? (i.e., javapi.something, org.something, etc.)
