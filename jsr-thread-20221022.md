@@ -61,9 +61,9 @@ Secondly, users of the Java Programming language facing the problem of thread, w
 Thirdly, depending the differences of the situations. Some of them will require the pyramidal thread pools to facing(or may say solving) the domain business. However, making thread run faster that would be the next requirement. Like: solving stacktrace, organize priority and waking all threads using stacktrace to running the thread.
 
 当今环境下对线程的使用管理和构建的痛点，如下：
-1、线程池的大小和实际服务器的资源情况相关 JSR133有相关描述
-2、遇到线程问题时，解决者的综合素养能力要求较高
-3、根据不同的业务实际场景，会有金字塔型的线程池管理编码诉求，此时可以有优化或有效进行线程的统筹管理，但是实现方式其实较为通用：处理依赖链路，进行优先级规划，或以全局视角直接通过唤醒所有线程，根据链路进行运行线程
+* 线程池的大小和实际服务器的资源情况相关 JSR133有相关描述
+* 遇到线程问题时，解决者的综合素养能力要求较高
+* 根据不同的业务实际场景，会有金字塔型的线程池管理编码诉求，此时可以有优化或有效进行线程的统筹管理，但是实现方式其实较为通用：处理依赖链路，进行优先级规划，或以全局视角直接通过唤醒所有线程，根据链路进行运行线程
 
 
 
