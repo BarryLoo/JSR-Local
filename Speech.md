@@ -3,6 +3,7 @@
 - [Speech](#speech)
   - [The Previous](#the-previous)
   - [Context](#context)
+      - [code sample](#code-sample)
   - [Conclusion](#conclusion)
   - [Keyword](#keyword)
 
@@ -33,6 +34,28 @@ To solve this situation, we need to build a thread pool in jvm. Registing the re
 更糟的是，当构建塔式线程池状态下，线程池工具并不能解决容器或系统的资源被线程有效在软件中使用的问题
 
 为了解决这一现象，我们需要在jvm中构建线程池，对线程间关系做持有记录，同时基于堆栈进行运行（依赖关系）。用户可以专注于业务领域，以及大致的资源
+
+#### code sample
+
+```java
+
+	private static final String SCHEDULE_THREAD_TYPE = "Schedule";
+	private static final String REGULAR_THREAD_TYPE = "Regular";
+	private static final ConcurrentHashMap<String, ExecutorService> PYRAMIDAL_THREAD_POOL = new ConcurrentHashMap<>();
+
+    public ThreadHelperUtil getInstance() {
+        return new ThreadHelperUtil();
+    }
+
+	public <T> Future<T> submit(String domainThreadName, Callable<T> caller, String type) {
+		return submit(MIN_CORE_SIZE, MAX_CORE_SIZE, defaultHandler, domainThreadName, caller, type, Thread.NORM_PRIORITY);
+	}
+	
+	public void submit(String domainThreadName, Runnable caller, String type) {
+		submit(MIN_CORE_SIZE, MAX_CORE_SIZE, defaultHandler, domainThreadName, caller, type, Thread.NORM_PRIORITY);
+	}
+
+```
 
 
 ## Conclusion
